@@ -13,5 +13,7 @@ public class Car {
     private String name_client;
     private String model;
     private String color;
+    private Boolean isDeleted = Boolean.FALSE;
+    private String date_order;
 
 }

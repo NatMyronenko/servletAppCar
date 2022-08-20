@@ -21,13 +21,18 @@ public class PutServlet extends HttpServlet {
         int code = Integer.parseInt(sid);
 
         String name_client = request.getParameter("name_client");
-        String model = request.getParameter("price");
+        String model = request.getParameter("model");
+        String color = request.getParameter("color");
+        String date_order = request.getParameter("date_order");
 
         Car car = new Car();
+
         car.setCode(code);
         car.setName_client(name_client);
         car.setModel(model);
-        car.setColor(request.getParameter("color"));
+        car.setColor(color);
+        car.setDate_order(date_order);
+
 
         int status = CarRepository.update(car);
 
