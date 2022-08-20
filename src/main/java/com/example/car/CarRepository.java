@@ -9,16 +9,16 @@ import java.util.List;
 @Slf4j
 @Logged
 public class CarRepository {
-
- //   public static void main(String[] args) {
- //       getConnection();
-  //      isDeleted(8);
+//
+//    public static void main(String[] args) {
+//        getConnection();
+//        isDeleted(8);
 //        Employee employee = new Employee();
 //        employee.setName("oleg");
 //        employee.setEmail(" ");
 //        employee.setCountry(" ");
 //        save(employee);
- //   }
+//    }
 
     @Logged
     public static Connection getConnection() {
@@ -46,10 +46,11 @@ public class CarRepository {
         int status = 0;
         try {
             Connection connection = CarRepository.getConnection();
-            PreparedStatement ps = connection.prepareStatement("insert into data_cars(name_client,model,color) values (?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("insert into data_cars(name_client,model,color,date_order) values (?,?,?,?)");
             ps.setString(1, car.getName_client());
             ps.setString(2, car.getModel());
             ps.setString(3, car.getColor());
+            ps.setString(4, car.getDate_order());
 
 
             status = ps.executeUpdate();
@@ -62,28 +63,41 @@ public class CarRepository {
         return status;
     }
     //////////////////
-    @Logged
-    public static int saveDateOrder(Car car) {
-        int status = 0;
-        try {
-            Connection connection = CarRepository.getConnection();
-            PreparedStatement ps = connection.prepareStatement("insert into data_cars(name_client,model,color,date_order,code) values (?,?,?,?,?)");
-
-            ps.setString(1, car.getName_client());
-            ps.setString(2, car.getModel());
-            ps.setString(3, car.getColor());
-            ps.setString(4,car.getDate_order());
-            ps.setInt(5,car.getCode());
-
-            status = ps.executeUpdate();
-            connection.close();
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        log.info("added new data car - end: status = {}", status);
-        return status;
-    }
+//    @Logged
+//    public static int saveDateOrder(Car car) {
+//        int status = 0;
+//        try {
+//            Connection connection = CarRepository.getConnection();
+//            PreparedStatement ps = connection.prepareStatement("insert into data_cars(name_client,model,color,date_order,code) values (?,?,?,?,?)");
+//
+//            ps.setString(1, car.getName_client());
+//            ps.setString(2, car.getModel());
+//            ps.setString(3, car.getColor());
+//            ps.setString(4,car.getDate_order());
+//            ps.setInt(5,car.getCode());
+//
+//            status = ps.executeUpdate();
+//            connection.close();
+//
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        log.info("added new data car - end: status = {}", status);
+//        return status;
+//    }
+//    @Logged
+//    public static int saveOrderIfColor(Car car) {
+//        int status = 0;
+//        if (car.getColor().equals("red")){
+//            status = update(car);
+//
+//        } else if (car.getColor()!="red"){
+//            status = 0;
+//        }
+//
+//        log.info("added new data car - end: status = {}", status);
+//        return status;
+//        }
 
     @Logged
     public static int update(Car car) {
@@ -92,14 +106,14 @@ public class CarRepository {
 
         try {
             Connection connection = CarRepository.getConnection();
-            PreparedStatement ps = connection.prepareStatement("update data_cars set name_client=?,model=?,color=?,date_order=? where code=?");
+            PreparedStatement ps = connection.prepareStatement("update data_cars set name_client=?,model=?,color=? where code=?");
 
             ps.setString(1, car.getName_client());
             ps.setString(2, car.getModel());
             ps.setString(3, car.getColor());
            // ps.setString(4, car.getDate_order());
-            ps.setInt(4, car.getCode());
-            ps.setString(5, car.getDate_order());
+           // ps.setInt(4, car.getCode());
+            //ps.setString(5, car.getDate_order());
 
 
             status = ps.executeUpdate();

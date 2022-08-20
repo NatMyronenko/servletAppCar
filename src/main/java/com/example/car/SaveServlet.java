@@ -24,7 +24,7 @@ public class SaveServlet extends HttpServlet {
         String model = request.getParameter("model");
         String color = request.getParameter("color");
         String date_order = request.getParameter("date_order");
-        String code = request.getParameter("code");
+      //  String code = request.getParameter("code");
 
         Car car = new Car();
 
@@ -33,15 +33,15 @@ public class SaveServlet extends HttpServlet {
         car.setModel(model);
         car.setColor(color);
         car.setDate_order(date_order);
-        car.setCode(Integer.parseInt(code));
+     ////   car.setCode(Integer.parseInt(code));
 
         //out.println(employee.toString());
         //out.println(EmployeeRepository.getConnection());
 
-        //   int status = CarRepository.save(car);
+          int status = CarRepository.save(car);
         //out.println(status);
 
-        int status = CarRepository.saveDateOrder(car);
+       // int status = CarRepository.saveDateOrder(car);
 
         if (status > 0) {
             out.print("Record saved successfully!");
