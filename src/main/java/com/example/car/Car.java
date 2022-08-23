@@ -9,11 +9,12 @@ import lombok.ToString;
 @ToString
 public class Car {
 
+
     private int code;
     private String name_client;
     private String model;
     private String color;
     private Boolean isDeleted = Boolean.FALSE;
     private String date_order;
-
+    private String available ;
 }

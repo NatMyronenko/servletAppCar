@@ -16,9 +16,9 @@ public class ViewByIDServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String sid = request.getParameter("code");
-        int code = Integer.parseInt(sid);
+       int code = Integer.parseInt(sid);
 
-        Car car = CarRepository.getCarByCode(code);
+       Car car = CarRepository.getCarByCode(code);
 
         out.print(car);
         out.close();

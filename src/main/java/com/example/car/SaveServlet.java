@@ -19,21 +19,21 @@ public class SaveServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-
         String name_client = request.getParameter("name_client");
         String model = request.getParameter("model");
         String color = request.getParameter("color");
         String date_order = request.getParameter("date_order");
-      //  String code = request.getParameter("code");
+      //  String country = request.getParameter("country");
 
         Car car = new Car();
+
 
 
         car.setName_client(name_client);
         car.setModel(model);
         car.setColor(color);
         car.setDate_order(date_order);
-     ////   car.setCode(Integer.parseInt(code));
+       // car.setCountry(country);
 
         //out.println(employee.toString());
         //out.println(EmployeeRepository.getConnection());

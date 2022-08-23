@@ -9,16 +9,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/viewServlet")
-public class ViewServlet extends HttpServlet {
+@WebServlet("/viewAvailable")
+public class AvailableCar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-      //List<Car> list = CarRepository.getAllCars();
-      // List<Car> list = CarRepository.getCarByCode();
-        List<Car> list = CarRepository.showDeletedCar();
+       List<Car> list = CarRepository.getAvailableCar();
 
 
         for (Car car : list) {
